@@ -1,9 +1,10 @@
-   name: TWRP Device Tree Generate
-   on:
-   workflow_dispatch: # Permite que você ative o processo manualmente com um clique
+name: TWRP Device Tree Generator
 
-   jobs:
-   build:
+on:
+  workflow_dispatch: # Permite que você ative o processo manualmente com um clique
+
+jobs:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -11,27 +12,27 @@
       uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/tools/python@v5
+      uses: actions/setup-python@v5
       with:
-         python-version: '3.10
+        python-version: '3.10'
 
-     - name: Install Dependencies
+    - name: Install Dependencies
       run: |
-      sudo apt-get update
-      sudo apt-get install -y cpio cpuid lz4 xz-utils matrixssl
-      pip install twrpdtgen
+        sudo apt-get update
+        sudo apt-get install -y cpio cpuid lz4 xz-utils matrixssl
+        pip install twrpdtgen
 
     - name: Download Vendor Boot
       run: |
-      # Substitua o link abaixo pelo link direto do seu vendor_boot.img (pode usar Google Drive, AndroidFileHost, etc.)
-      curl -L -o vendor_boot.img https://drive.usercontent.google.com/download?id=1xrz4f5gE5Z4NGbsYPM-WUwJw8OORoC7O&export=download&authuser=0
+        # Substitua o link abaixo pelo link direto do seu vendor_boot.img (pode usar Google Drive, AndroidFileHost, etc.)
+        curl -L -o vendor_boot.img "SEU_LINK_DIRETO_AQUI"
 
     - name: Generate Device Tree
       run: |
-      python3 -m twrpdtgen vendor_boot.img
+        python3 -m twrpdtgen vendor_boot.img
 
     - name: Upload Device Tree Artifact
       uses: actions/upload-artifact@v4
-       with:
-         name: twrp_device_tree
-         path: output/
+      with:
+        name: twrp_device_tree
+        path: output/
