@@ -1,5 +1,4 @@
-name: TWRP Device Tree Generator
-
+name: TWRP Device Tree Generate
 on:
   workflow_dispatch: # Permite que você ative o processo manualmente com um clique
 
