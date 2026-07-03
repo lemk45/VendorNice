@@ -1,9 +1,9 @@
-name: TWRP Device Tree Generate
-on:
+  name: TWRP Device Tree Generate
+  on:
   workflow_dispatch: # Permite que você ative o processo manualmente com um clique
 
-jobs:
-  build:
+  jobs:
+   build:
     runs-on: ubuntu-latest
 
     steps:
