@@ -19,13 +19,14 @@ jobs:
     - name: Install Dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y cpio cpuid lz4 xz-utils matrixssl
+        sudo apt-get install -y cpio cpuid lz4 xz-utils
         pip install twrpdtgen
+        
 
     - name: Download Vendor Boot
       run: |
         # Substitua o link abaixo pelo link direto do seu vendor_boot.img (pode usar Google Drive, AndroidFileHost, etc.)
-        curl -L -o vendor_boot.img "SEU_LINK_DIRETO_AQUI"
+        curl -L -o vendor_boot.img "https://drive.usercontent.google.com/download?id=1xrz4f5gE5Z4NGbsYPM-WUwJw8OORoC7O&export=download&authuser=0"
 
     - name: Generate Device Tree
       run: |
